@@ -1,7 +1,7 @@
 package com.epam.mjc;
 
 
-public class StudentManager  {
+public class StudentManager extends IllegalArgumentException {
 
 
   private static final long[] IDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
@@ -9,10 +9,9 @@ public class StudentManager  {
   public Student find(long studentID) {
 
     Student student =Student.getValueOf(studentID);
-    if (student==null)
+    if (student == null)
       throw new StudentNotFoundException(studentID);
-
-    return student;
+      return student;
   }
 
   public static void main(String[] args) {
