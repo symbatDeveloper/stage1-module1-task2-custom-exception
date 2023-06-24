@@ -3,7 +3,7 @@ package com.epam.mjc;
 
 import java.util.Arrays;
 
-public enum Student {
+public enum Student{
 
   MAX(1, "Max", 15),
   KOLYA(2, "Kolya", 18),
@@ -20,10 +20,12 @@ public enum Student {
   private String name;
   private int age;
 
+
   Student(long id, String name, int age) {
     this.id = id;
     this.name = name;
     this.age = age;
+
   }
 
   public static Student getValueOf(long id) {
@@ -31,6 +33,7 @@ public enum Student {
         .filter(student -> id == student.getId())
         .findFirst()
         .orElse(null);
+
   }
 
   public long getId() {
@@ -43,5 +46,14 @@ public enum Student {
 
   public int getAge() {
     return age;
+  }
+
+  public class StudentNotFoundException extends IllegalArgumentException {
+
+    public StudentNotFoundException(long id) {
+
+      super("Could not find student with ID {id}");
+
+    }
   }
 }
